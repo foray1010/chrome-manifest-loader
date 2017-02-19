@@ -1,0 +1,29 @@
+{
+  "name": "chrome-manifest-loader",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=6.9"
+  },
+  "description": "Image process loader for webpack",
+  "license": "MIT",
+  "author": "foray1010",
+  "homepage": "https://github.com/foray1010/chrome-manifest-loader",
+  "repository": "foray1010/chrome-manifest-loader",
+  "bugs": "https://github.com/foray1010/chrome-manifest-loader/issues",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "np": "np",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "co": "^4.6.0"
+  },
+  "devDependencies": {
+    "eslint-config-foray1010": "^3.0.0",
+    "np": "^2.12.0"
+  }
+}
