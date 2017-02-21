@@ -1,6 +1,6 @@
 {
   "name": "chrome-manifest-loader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "engines": {
     "node": ">=6.9"
   },
