@@ -20,7 +20,8 @@
     "lint"
   ],
   "dependencies": {
-    "co": "^4.6.0"
+    "lodash": "^4.17.4",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "eslint-config-foray1010": "^3.0.0",
