@@ -11,7 +11,7 @@ const requireRegexp = /^require\(([^)]*)\)$/
 const reduceMatchedKeyPaths = (obj, keyPath) => {
   return _(obj)
     .flatMap((value, key) => {
-      const newKeyPath = _.compact([keyPath, key]).join('.')
+      const newKeyPath = _.without([keyPath, key], null, undefined).join('.')
 
       if (typeof value === 'object') {
         return reduceMatchedKeyPaths(value, newKeyPath)
@@ -30,7 +30,7 @@ const reduceMatchedKeyPaths = (obj, keyPath) => {
 }
 
 const loader = function (content) {
-  if (typeof this.query === 'string') {
+  if (typeof this.query !== 'string') {
     throw new Error('does not support inline querystring as options, define your options in webpack.config.js instead')
   }
 
