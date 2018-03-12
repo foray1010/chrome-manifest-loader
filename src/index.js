@@ -31,7 +31,9 @@ const reduceMatchedKeyPaths = (obj, keyPath) => {
 
 const loader = function (content) {
   if (typeof this.query === 'string') {
-    throw new Error('does not support inline querystring as options, define your options in webpack.config.js instead')
+    throw new Error(
+      'does not support inline querystring as options, define your options in webpack.config.js instead'
+    )
   }
 
   const manifest = JSON.parse(content)
@@ -57,13 +59,14 @@ const loader = function (content) {
     }
   })
 
-  const unevalManifest = JSON.stringify(
-    JSON.stringify(manifest)
-  )
+  const unevalManifest = JSON.stringify(JSON.stringify(manifest))
 
-  return exportsString + uuidMappings.reduce((acc, mapping) => {
-    return acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`)
-  }, unevalManifest)
+  return (
+    exportsString +
+    uuidMappings.reduce((acc, mapping) => {
+      return acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`)
+    }, unevalManifest)
+  )
 }
 
 module.exports = loader

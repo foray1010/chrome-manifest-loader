@@ -13,12 +13,13 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
-    "np": "np",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "precommit": "lint-staged"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "lint-staged": {
+    "*.js": ["prettier-eslint --write", "eslint --fix", "git add"],
+    "*.json": ["prettier-eslint --write", "git add"]
+  },
+  "pre-commit": ["lint"],
   "dependencies": {
     "lodash": "^4.17.4",
     "uuid": "^3.0.1"
@@ -26,6 +27,9 @@
   "devDependencies": {
     "eslint": "^4.18.2",
     "eslint-config-foray1010": "^6.8.0",
-    "np": "^2.12.0"
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "np": "^2.12.0",
+    "prettier-eslint-cli": "^4.7.1"
   }
 }

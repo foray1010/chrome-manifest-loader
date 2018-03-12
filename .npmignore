@@ -123,3 +123,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.*
+circle.yml
+yarn.lock
