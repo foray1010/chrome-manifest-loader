@@ -52,8 +52,8 @@ const loader = function (content) {
     _.set(manifest, matchedKeyPath, id)
 
     return {
-      id: id,
-      filePath: filePath
+      id,
+      filePath
     }
   })
 
