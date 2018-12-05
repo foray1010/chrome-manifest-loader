@@ -1,8 +1,8 @@
 'use strict'
 
 const _ = require('lodash')
+const nanoid = require('nanoid')
 const path = require('path')
-const uuidV4 = require('uuid/v4')
 
 const exportsString = 'module.exports = '
 const pkgPath = path.resolve('./package.json')
@@ -47,9 +47,9 @@ const loader = function (content) {
   }
 
   const matchedKeyPaths = reduceMatchedKeyPaths(manifest)
-  const uuidMappings = matchedKeyPaths.map((matchedKeyPath) => {
+  const idMappings = matchedKeyPaths.map((matchedKeyPath) => {
     const filePath = _.get(manifest, matchedKeyPath).replace(requireRegexp, (match, p1) => p1)
-    const id = uuidV4()
+    const id = nanoid()
 
     _.set(manifest, matchedKeyPath, id)
 
@@ -63,7 +63,7 @@ const loader = function (content) {
 
   return (
     exportsString +
-    uuidMappings.reduce((acc, mapping) => {
+    idMappings.reduce((acc, mapping) => {
       return acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`)
     }, unevalManifest)
   )

@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "uuid": "^3.0.1"
+    "nanoid": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
