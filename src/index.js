@@ -4,8 +4,6 @@ const _ = require('lodash')
 const nanoid = require('nanoid')
 const path = require('path')
 
-const exportsString = 'module.exports = '
-const pkgPath = path.resolve('./package.json')
 const requireRegexp = /^require\(([^)]*)\)$/
 
 const reduceMatchedKeyPaths = (obj, keyPath) => {
@@ -29,7 +27,7 @@ const reduceMatchedKeyPaths = (obj, keyPath) => {
     .value()
 }
 
-const loader = function (content) {
+module.exports = function loader(content) {
   if (typeof this.query === 'string') {
     throw new Error(
       'does not support inline querystring as options, define your options in webpack.config.js instead'
@@ -40,6 +38,7 @@ const loader = function (content) {
 
   const mapVersion = _.get(this.query, 'mapVersion')
   if (mapVersion) {
+    const pkgPath = path.resolve('./package.json')
     const pkg = require(pkgPath)
     this.addDependency(pkgPath)
 
@@ -59,14 +58,11 @@ const loader = function (content) {
     }
   })
 
-  const unevalManifest = JSON.stringify(JSON.stringify(manifest))
-
-  return (
-    exportsString +
-    idMappings.reduce((acc, mapping) => {
-      return acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`)
-    }, unevalManifest)
+  const manifestStr = JSON.stringify(JSON.stringify(manifest))
+  const unevalManifest = idMappings.reduce(
+    (acc, mapping) =>
+      acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`),
+    manifestStr
   )
+  return 'module.exports = ' + unevalManifest
 }
-
-module.exports = loader
