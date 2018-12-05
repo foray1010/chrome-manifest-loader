@@ -9,7 +9,7 @@ const requireRegexp = /^require\(([^)]*)\)$/
 const reduceMatchedKeyPaths = (obj, keyPath) => {
   return _(obj)
     .flatMap((value, key) => {
-      const newKeyPath = _.compact([keyPath, key]).join('.')
+      const newKeyPath = _.reject([keyPath, key], _.isNil).join('.')
 
       if (typeof value === 'object') {
         return reduceMatchedKeyPaths(value, newKeyPath)
