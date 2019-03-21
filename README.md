@@ -41,7 +41,9 @@ Wrap your asset path with `require()`
           },
           'extract-loader',
           'chrome-manifest-loader'
-        ]
+        ],
+        // needed for webpack 4 to override default json loader
+        type: 'javascript/auto'
       }
     ]
   }
@@ -91,7 +93,9 @@ Option: `mapVersion: true`
               mapVersion: true
             }
           }
-        ]
+        ],
+        // needed for webpack 4 to override default json loader
+        type: 'javascript/auto'
       }
     ]
   }
