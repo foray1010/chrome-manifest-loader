@@ -1,6 +1,6 @@
 # chrome-manifest-loader
 
-```
+```sh
 npm install --save-dev chrome-manifest-loader extract-loader file-loader
 ```
 
@@ -11,7 +11,6 @@ Chrome manifest loader for webpack
 - import assets that is defined in `manifest.json`
 
 - map `package.json` version to `manifest.json` version
-
 
 ## Usage
 
@@ -26,6 +25,7 @@ Wrap your asset path with `require()`
 - if no `./` or `../` prefix, it will be consider as under `node_modules`
 
 `webpack.config.js`
+
 ```js
 {
   "module": {
@@ -51,6 +51,7 @@ Wrap your asset path with `require()`
 ```
 
 `manifest.json`
+
 ```json
 {
   "icon": {
@@ -60,6 +61,7 @@ Wrap your asset path with `require()`
 ```
 
 __output__
+
 ```json
 {
   "icon": {
@@ -73,6 +75,7 @@ __output__
 Option: `mapVersion: true`
 
 `webpack.config.js`
+
 ```js
 {
   "module": {
@@ -103,6 +106,7 @@ Option: `mapVersion: true`
 ```
 
 `package.json`
+
 ```json
 {
   "version": "1.0.1"
@@ -110,11 +114,13 @@ Option: `mapVersion: true`
 ```
 
 `manifest.json`
+
 ```json
 {}
 ```
 
 __output__ (`manifest.json`)
+
 ```json
 {
   "version": "1.0.1"
