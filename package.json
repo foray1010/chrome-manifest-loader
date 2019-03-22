@@ -15,8 +15,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "nanoid": "^2.0.0"
+    "nanoid": "^2.0.0",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",

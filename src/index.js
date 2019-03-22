@@ -1,30 +1,28 @@
 'use strict'
 
-const _ = require('lodash')
 const nanoid = require('nanoid')
 const path = require('path')
+const R = require('ramda')
 
 const requireRegexp = /^require\(([^)]*)\)$/
 
-const reduceMatchedKeyPaths = (obj, keyPath) => {
-  return _(obj)
-    .flatMap((value, key) => {
-      const newKeyPath = _.reject([keyPath, key], _.isNil).join('.')
+const reduceMatchedKeyPaths = (obj, keyPath = []) => {
+  return Object.keys(obj).reduce((acc, key) => {
+    const fullKeyPath = [...keyPath, key]
+    const value = obj[key]
 
-      if (typeof value === 'object') {
-        return reduceMatchedKeyPaths(value, newKeyPath)
+    if (typeof value === 'object') {
+      return [...acc, ...reduceMatchedKeyPaths(value, fullKeyPath)]
+    }
+
+    if (typeof value === 'string') {
+      if (requireRegexp.test(value)) {
+        return [...acc, fullKeyPath]
       }
+    }
 
-      if (typeof value === 'string') {
-        if (requireRegexp.test(value)) {
-          return newKeyPath
-        }
-      }
-
-      return null
-    })
-    .compact()
-    .value()
+    return acc
+  }, [])
 }
 
 module.exports = function loader(content) {
@@ -36,7 +34,7 @@ module.exports = function loader(content) {
 
   const manifest = JSON.parse(content)
 
-  const mapVersion = _.get(this.query, 'mapVersion')
+  const {mapVersion} = this.query || {}
   if (mapVersion) {
     const pkgPath = path.resolve('./package.json')
     const pkg = require(pkgPath)
@@ -45,20 +43,19 @@ module.exports = function loader(content) {
     manifest.version = pkg.version
   }
 
-  const matchedKeyPaths = reduceMatchedKeyPaths(manifest)
-  const idMappings = matchedKeyPaths.map((matchedKeyPath) => {
-    const filePath = _.get(manifest, matchedKeyPath).replace(requireRegexp, (match, p1) => p1)
-    const id = nanoid()
-
-    _.set(manifest, matchedKeyPath, id)
-
+  const idMappings = reduceMatchedKeyPaths(manifest).map((matchedKeyPath) => {
     return {
-      id,
-      filePath
+      id: nanoid(),
+      filePath: R.path(matchedKeyPath, manifest).replace(requireRegexp, (match, p1) => p1),
+      keyPath: matchedKeyPath
     }
   })
 
-  const manifestStr = JSON.stringify(JSON.stringify(manifest))
+  const manifestWithIds = idMappings.reduce((acc, idMapping) => {
+    return R.set(R.lensPath(idMapping.keyPath), idMapping.id, acc)
+  }, manifest)
+
+  const manifestStr = JSON.stringify(JSON.stringify(manifestWithIds))
   const unevalManifest = idMappings.reduce(
     (acc, mapping) =>
       acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`),
