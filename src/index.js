@@ -56,10 +56,8 @@ module.exports = function loader(content) {
   }, manifest)
 
   const manifestStr = JSON.stringify(JSON.stringify(manifestWithIds))
-  const unevalManifest = idMappings.reduce(
-    (acc, mapping) =>
-      acc.replace(mapping.id, `" + require(${JSON.stringify(mapping.filePath)}) + "`),
-    manifestStr
-  )
+  const unevalManifest = idMappings.reduce((acc, idMapping) => {
+    return acc.replace(idMapping.id, `" + require(${JSON.stringify(idMapping.filePath)}) + "`)
+  }, manifestStr)
   return 'module.exports = ' + unevalManifest
 }
