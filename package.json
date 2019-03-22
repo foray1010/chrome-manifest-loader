@@ -15,6 +15,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "browserslist": "^4.5.2",
     "nanoid": "^2.0.0",
     "ramda": "^0.26.1"
   },

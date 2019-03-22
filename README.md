@@ -126,3 +126,58 @@ __output__ (`manifest.json`)
   "version": "1.0.1"
 }
 ```
+
+### Map browserslist config to manifest.json minimum_chrome_version
+
+Option: `mapMinimumChromeVersion: true`
+
+`webpack.config.js`
+
+```js
+{
+  "module": {
+    "rules": [
+      {
+        test: /\/manifest\.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          },
+          'extract-loader',
+          {
+            loader: 'chrome-manifest-loader',
+            options: {
+              mapMinimumChromeVersion: true
+            }
+          }
+        ],
+        // needed for webpack 4 to override default json loader
+        type: 'javascript/auto'
+      }
+    ]
+  }
+}
+```
+
+`.browserslistrc`
+
+```json
+chrome >= 51
+```
+
+`manifest.json`
+
+```json
+{}
+```
+
+__output__ (`manifest.json`)
+
+```json
+{
+  "minimum_chrome_version": "51"
+}
+```

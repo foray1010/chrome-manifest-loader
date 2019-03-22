@@ -1,5 +1,6 @@
 'use strict'
 
+const browserslist = require('browserslist')
 const nanoid = require('nanoid')
 const path = require('path')
 const R = require('ramda')
@@ -41,6 +42,29 @@ module.exports = function loader(content) {
     this.addDependency(pkgPath)
 
     manifest.version = pkg.version
+  }
+
+  const {mapMinimumChromeVersion} = this.query || {}
+  if (mapMinimumChromeVersion) {
+    // override browserslist default target browsers when cannot read config from user's repo
+    const browserslistDefaults = browserslist.defaults
+    browserslist.defaults = []
+
+    const minimumChromeVersion = browserslist().reduceRight((acc, browserVersion) => {
+      // take first result only
+      if (acc) return acc
+
+      const matchResult = browserVersion.match(/^chrome ((?:\d|\.)+)$/)
+      if (matchResult) return matchResult[1]
+
+      return acc
+    }, null)
+
+    if (minimumChromeVersion) {
+      manifest.minimum_chrome_version = minimumChromeVersion
+    }
+
+    browserslist.defaults = browserslistDefaults
   }
 
   const idMappings = reduceMatchedKeyPaths(manifest).map((matchedKeyPath) => {
