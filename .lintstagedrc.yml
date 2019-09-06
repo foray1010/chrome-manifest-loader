@@ -2,6 +2,6 @@
   - 'prettier-eslint --write'
   - 'eslint --fix'
   - 'git add'
-'*.{json,yaml,yml}':
+'*.{json,md,yaml,yml}':
   - 'prettier-eslint --write'
   - 'git add'

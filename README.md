@@ -60,7 +60,7 @@ Wrap your asset path with `require()`
 }
 ```
 
-__output__
+**output**
 
 ```json
 {
@@ -119,7 +119,7 @@ Option: `mapVersion: true`
 {}
 ```
 
-__output__ (`manifest.json`)
+**output** (`manifest.json`)
 
 ```json
 {
@@ -174,7 +174,7 @@ chrome >= 51
 {}
 ```
 
-__output__ (`manifest.json`)
+**output** (`manifest.json`)
 
 ```json
 {
