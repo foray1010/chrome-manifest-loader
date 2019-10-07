@@ -1,7 +1,7 @@
 '*.js':
-  - 'prettier-eslint --write'
+  - 'prettier --write'
   - 'eslint --fix'
   - 'git add'
 '*.{json,md,yaml,yml}':
-  - 'prettier-eslint --write'
+  - 'prettier --write'
   - 'git add'
