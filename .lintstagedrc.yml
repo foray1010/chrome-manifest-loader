@@ -2,6 +2,10 @@
   - 'yarn prettier --write'
   - 'yarn eslint --fix'
   - 'git add'
-'*.{json,md,yaml,yml}':
+'*.{json,yaml,yml}':
   - 'yarn prettier --write'
+  - 'git add'
+'*.md':
+  - 'yarn prettier --write'
+  - 'yarn remark'
   - 'git add'

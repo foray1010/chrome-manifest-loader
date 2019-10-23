@@ -127,7 +127,7 @@ Option: `mapVersion: true`
 }
 ```
 
-### Map browserslist config to manifest.json minimum_chrome_version
+### Map browserslist config to minimum_chrome_version
 
 Option: `mapMinimumChromeVersion: true`
 
