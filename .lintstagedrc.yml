@@ -9,3 +9,7 @@
   - 'yarn prettier --write'
   - 'yarn remark'
   - 'git add'
+'package.json':
+  - 'sort-package-json'
+  - 'yarn prettier --write'
+  - 'git add'
