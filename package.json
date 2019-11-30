@@ -29,7 +29,7 @@
     "@foray1010/remark-preset": "1.1.2",
     "eslint": "6.7.1",
     "husky": "3.1.0",
-    "lint-staged": "9.4.3",
+    "lint-staged": "9.5.0",
     "prettier": "1.19.1",
     "remark-cli": "7.0.1",
     "sort-package-json": "1.24.0"
