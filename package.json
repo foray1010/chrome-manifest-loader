@@ -35,6 +35,6 @@
     "sort-package-json": "1.24.0"
   },
   "engines": {
-    "node": ">=6.9"
+    "node": ">=10.13"
   }
 }
