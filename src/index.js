@@ -70,7 +70,7 @@ module.exports = function loader(content) {
     browserslist.defaults = browserslistDefaults
   }
 
-  const idMappings = reduceMatchedKeyPaths(manifest).map(matchedKeyPath => {
+  const idMappings = reduceMatchedKeyPaths(manifest).map((matchedKeyPath) => {
     return {
       id: nanoid(),
       filePath: R.path(matchedKeyPath, manifest).replace(
