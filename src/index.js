@@ -1,7 +1,7 @@
 'use strict'
 
 const browserslist = require('browserslist')
-const nanoid = require('nanoid')
+const { nanoid } = require('nanoid')
 const path = require('path')
 const R = require('ramda')
 
