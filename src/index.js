@@ -7,23 +7,28 @@ const R = require('ramda')
 
 const requireRegexp = /^require\(([^)]*)\)$/
 
-const reduceMatchedKeyPaths = (obj, keyPath = []) => {
-  return Object.keys(obj).reduce((acc, key) => {
-    const fullKeyPath = [...keyPath, key]
-    const value = obj[key]
+const reduceMatchedKeyPaths = (value, currentKeyPath = []) => {
+  if (Array.isArray(value)) {
+    return value
+      .map((v, i) => reduceMatchedKeyPaths(v, [...currentKeyPath, i]))
+      .reduce((acc, val) => acc.concat(val), [])
+      .filter(Boolean)
+  }
 
-    if (typeof value === 'object') {
-      return [...acc, ...reduceMatchedKeyPaths(value, fullKeyPath)]
+  if (typeof value === 'object' && value !== null) {
+    return Object.keys(value)
+      .map((k) => reduceMatchedKeyPaths(value[k], [...currentKeyPath, k]))
+      .reduce((acc, val) => acc.concat(val), [])
+      .filter(Boolean)
+  }
+
+  if (typeof value === 'string') {
+    if (requireRegexp.test(value)) {
+      return { matchedKeyPath: currentKeyPath }
     }
+  }
 
-    if (typeof value === 'string') {
-      if (requireRegexp.test(value)) {
-        return [...acc, fullKeyPath]
-      }
-    }
-
-    return acc
-  }, [])
+  return null
 }
 
 module.exports = function loader(content) {
@@ -70,16 +75,18 @@ module.exports = function loader(content) {
     browserslist.defaults = browserslistDefaults
   }
 
-  const idMappings = reduceMatchedKeyPaths(manifest).map((matchedKeyPath) => {
-    return {
-      id: nanoid(),
-      filePath: R.path(matchedKeyPath, manifest).replace(
-        requireRegexp,
-        (match, p1) => p1,
-      ),
-      keyPath: matchedKeyPath,
-    }
-  })
+  const idMappings = reduceMatchedKeyPaths(manifest).map(
+    ({ matchedKeyPath }) => {
+      return {
+        id: nanoid(),
+        filePath: R.path(matchedKeyPath, manifest).replace(
+          requireRegexp,
+          (match, p1) => p1,
+        ),
+        keyPath: matchedKeyPath,
+      }
+    },
+  )
 
   const manifestWithIds = idMappings.reduce((acc, idMapping) => {
     return R.set(R.lensPath(idMapping.keyPath), idMapping.id, acc)
