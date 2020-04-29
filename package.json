@@ -1,6 +1,6 @@
 {
   "name": "chrome-manifest-loader",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Image process loader for webpack",
   "homepage": "https://github.com/foray1010/chrome-manifest-loader",
   "bugs": "https://github.com/foray1010/chrome-manifest-loader/issues",
