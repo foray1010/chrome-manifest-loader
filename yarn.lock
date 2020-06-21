@@ -31,6 +31,13 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.9.6":
+  version "7.10.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.3.tgz#670d002655a7c366540c67f6fd3342cd09500364"
+  integrity sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@commitlint/cli@8.3.5":
   version "8.3.5"
   resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-8.3.5.tgz#6d93a3a8b2437fa978999d3f6a336bcc70be3fd3"
@@ -168,10 +175,10 @@
   dependencies:
     read-pkg-up "^7.0.0"
 
-"@foray1010/eslint-config@3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@foray1010/eslint-config/-/eslint-config-3.0.5.tgz#b455d0474105fae16218634fcfec5039c8ea1527"
-  integrity sha512-KM/ZEYljPk1i68RafJos1+xKLmJ1fhrUG/TAP5YXfij7vf/uVEHSwK5svF7Nwu7MnsHCcT9ZU4F7slSSAQ5xYw==
+"@foray1010/eslint-config@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@foray1010/eslint-config/-/eslint-config-3.1.0.tgz#a018006febd3396fdebd976e599b3c8accb59fb9"
+  integrity sha512-3l6aTDE81fBATEyIqkXgMAQHt702Og9O1cq7jWU0nzXix2XhdocqtBgym2hGqaWW4IUVgfkqjUu8rvyGKIPrQA==
   dependencies:
     "@foray1010/common-presets-utils" "^2.1.0"
     "@typescript-eslint/eslint-plugin" "^3.0.0"
@@ -180,6 +187,7 @@
     eslint-config-prettier "^6.3.0"
     eslint-plugin-import "^2.18.2"
     eslint-plugin-jest "^23.0.0"
+    eslint-plugin-jest-dom "^3.0.1"
     eslint-plugin-node "^11.0.0"
     eslint-plugin-prettier "^3.1.1"
     eslint-plugin-react "^7.16.0"
@@ -1091,6 +1099,14 @@ eslint-plugin-import@^2.18.2:
     read-pkg-up "^2.0.0"
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
+
+eslint-plugin-jest-dom@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest-dom/-/eslint-plugin-jest-dom-3.0.1.tgz#ab446c015bb7c9faed769533dfc3cecc2fcf6230"
+  integrity sha512-RszrVljcf+jxfudrvFo469HMVT+yeB5wt/6tY+33Ebiiq7Za1Uh5RVu+ZKPCKSd7E4buyi8bxcHLfNCFXSSz7w==
+  dependencies:
+    "@babel/runtime" "^7.9.6"
+    requireindex "^1.2.0"
 
 eslint-plugin-jest@^23.0.0:
   version "23.13.2"
@@ -3419,6 +3435,11 @@ replace-ext@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
+
+requireindex@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
+  integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
 
 resolve-from@5.0.0, resolve-from@^5.0.0:
   version "5.0.0"
