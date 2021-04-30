@@ -8,7 +8,8 @@
   "repository": "foray1010/chrome-manifest-loader",
   "license": "MIT",
   "author": "foray1010",
-  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "ci": "yarn lint:js && yarn lint:md",
     "eslint": "eslint --ext=cjs,js,mjs,ts,tsx --ignore-path=node_modules/@foray1010/eslint-config/eslintignore",
@@ -39,6 +40,6 @@
     "remark-cli": "9.0.0"
   },
   "engines": {
-    "node": ">=10.13"
+    "node": ">=12.13"
   }
 }

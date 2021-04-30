@@ -10,15 +10,13 @@ const requireRegexp = /^require\(([^)]*)\)$/
 const reduceMatchedKeyPaths = (value, currentKeyPath = []) => {
   if (Array.isArray(value)) {
     return value
-      .map((v, i) => reduceMatchedKeyPaths(v, [...currentKeyPath, i]))
-      .reduce((acc, val) => acc.concat(val), [])
+      .flatMap((v, i) => reduceMatchedKeyPaths(v, [...currentKeyPath, i]))
       .filter(Boolean)
   }
 
   if (typeof value === 'object' && value !== null) {
     return Object.keys(value)
-      .map((k) => reduceMatchedKeyPaths(value[k], [...currentKeyPath, k]))
-      .reduce((acc, val) => acc.concat(val), [])
+      .flatMap((k) => reduceMatchedKeyPaths(value[k], [...currentKeyPath, k]))
       .filter(Boolean)
   }
 
