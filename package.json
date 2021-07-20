@@ -36,7 +36,7 @@
     "@foray1010/eslint-config": "5.0.1",
     "@foray1010/prettier-config": "5.0.0",
     "@foray1010/remark-preset": "4.0.0",
-    "eslint": "7.30.0",
+    "eslint": "7.31.0",
     "husky": "7.0.1",
     "lint-staged": "11.0.1",
     "pinst": "2.1.6",
