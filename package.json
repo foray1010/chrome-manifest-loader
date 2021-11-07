@@ -41,7 +41,7 @@
     "lint-staged": "11.2.6",
     "pinst": "2.1.6",
     "prettier": "2.4.1",
-    "remark-cli": "9.0.0"
+    "remark-cli": "10.0.0"
   },
   "engines": {
     "node": ">=12.13"
