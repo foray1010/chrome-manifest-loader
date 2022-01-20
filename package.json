@@ -28,7 +28,7 @@
   "dependencies": {
     "browserslist": "^4.5.2",
     "nanoid": "^3.0.0",
-    "ramda": "^0.27.0"
+    "ramda": "^0.28.0"
   },
   "devDependencies": {
     "@commitlint/cli": "16.0.2",
