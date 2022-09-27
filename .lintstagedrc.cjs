@@ -6,7 +6,5 @@ module.exports = {
     'yarn eslint --fix',
   ],
   '*.{json,yaml,yml}': 'yarn prettier --write',
-  '*.{markdown,md}'(filenames) {
-    return [`yarn prettier --write ${filenames.join(' ')}`, 'yarn remark .']
-  },
+  '*.{markdown,md}': ['yarn prettier --write', 'yarn remark'],
 }
