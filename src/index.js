@@ -2,7 +2,7 @@
 
 const browserslist = require('browserslist')
 const { nanoid } = require('nanoid')
-const path = require('path')
+const path = require('node:path')
 const R = require('ramda')
 
 const requireRegexp = /^require\(([^)]*)\)$/
