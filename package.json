@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "ci": "yarn lint:js && yarn lint:md",
-    "eslint": "eslint --ext=cjs,cts,js,mjs,mts,ts,tsx --ignore-path=node_modules/@foray1010/eslint-config/eslintignore",
+    "eslint": "ESLINT_USE_FLAT_CONFIG=true eslint --config eslint.config.mjs",
     "lint:js": "yarn eslint .",
     "lint:md": "yarn remark .",
     "prepare": "husky install",
@@ -31,13 +31,13 @@
   "devDependencies": {
     "@commitlint/cli": "17.4.4",
     "@commitlint/config-conventional": "17.4.4",
-    "@foray1010/eslint-config": "9.2.0",
-    "@foray1010/prettier-config": "8.0.1",
-    "@foray1010/remark-preset": "8.0.0",
+    "@foray1010/eslint-config": "10.0.5",
+    "@foray1010/prettier-config": "9.0.0",
+    "@foray1010/remark-preset": "9.0.0",
     "eslint": "8.36.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.0",
-    "prettier": "2.8.4",
+    "prettier": "2.8.7",
     "remark-cli": "11.0.0"
   },
   "engines": {
