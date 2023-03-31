@@ -31,7 +31,7 @@ const reduceMatchedKeyPaths = (value, currentKeyPath = []) => {
 
 module.exports = function loader(content) {
   if (typeof this.query === 'string') {
-    throw new Error(
+    throw new TypeError(
       'does not support inline querystring as options, define your options in webpack.config.js instead',
     )
   }
