@@ -12,6 +12,14 @@ Chrome manifest loader for webpack
 
 - map `package.json` version to `manifest.json` version
 
+## Development Setup
+
+We are using [corepack](https://nodejs.org/api/corepack.html) to manage the `yarn` version
+
+```bash
+corepack enable
+```
+
 ## Usage
 
 first, import `manifest.json` in your index js once
