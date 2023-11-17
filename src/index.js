@@ -5,7 +5,7 @@ const { nanoid } = require('nanoid')
 const path = require('node:path')
 const R = require('ramda')
 
-const requireRegexp = /^require\(([^)]*)\)$/
+const requireRegexp = /^require\(([^)]*)\)$/u
 
 const reduceMatchedKeyPaths = (value, currentKeyPath = []) => {
   if (Array.isArray(value)) {
@@ -58,7 +58,7 @@ module.exports = function loader(content) {
         // take first result only
         if (acc) return acc
 
-        const matchResult = browserVersion.match(/^chrome ((?:\d|\.)+)$/)
+        const matchResult = browserVersion.match(/^chrome ((?:\d|\.)+)$/u)
         if (matchResult) return matchResult[1]
 
         return acc
