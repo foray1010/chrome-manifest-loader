@@ -38,7 +38,7 @@
     "@foray1010/remark-preset": "10.0.1",
     "eslint": "8.57.0",
     "husky": "9.0.11",
-    "lint-staged": "15.2.5",
+    "lint-staged": "15.2.7",
     "pinst": "3.0.0",
     "prettier": "3.3.1",
     "remark-cli": "12.0.1"
