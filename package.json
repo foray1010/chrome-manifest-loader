@@ -33,9 +33,9 @@
   "devDependencies": {
     "@commitlint/cli": "19.6.1",
     "@commitlint/config-conventional": "19.6.0",
-    "@foray1010/eslint-config": "13.0.1",
+    "@foray1010/eslint-config": "13.0.2",
     "@foray1010/prettier-config": "11.0.1",
-    "@foray1010/remark-preset": "10.0.1",
+    "@foray1010/remark-preset": "10.0.2",
     "eslint": "9.17.0",
     "husky": "9.1.7",
     "lint-staged": "15.2.11",
