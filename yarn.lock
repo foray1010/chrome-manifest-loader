@@ -1550,7 +1550,7 @@ __metadata:
     eslint: "npm:9.39.5"
     husky: "npm:9.1.7"
     lint-staged: "npm:15.5.2"
-    nanoid: "npm:^3.3.7"
+    nanoid: "npm:^6.0.0"
     pinst: "npm:3.0.0"
     prettier: "npm:3.9.6"
     ramda: "npm:^0.32.0"
@@ -4572,12 +4572,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.7":
-  version: 3.3.18
-  resolution: "nanoid@npm:3.3.18"
+"nanoid@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "nanoid@npm:6.0.1"
   bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 10c0/b994b4e396730f8be2520923284e2040d61eaee55cc6d4935ef6d38d34bafdc46133eda4d3faea5073bda545aa6079d82b886caeac5c731cf9ac18bcc1301425
+    nanoid: bin/nanoid.js
+  checksum: 10c0/5b362ad9822388dfebdf655849c76d3539e074d1003fbe6eb5dff8687faf93a9abbb19bdc5d134b9b8599f875f9b091feacfd7099b34b5fef23bc3f5be41dd10
   languageName: node
   linkType: hard
 
